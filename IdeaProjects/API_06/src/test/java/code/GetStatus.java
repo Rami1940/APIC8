@@ -2,6 +2,7 @@ package code;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class GetStatus {
@@ -23,4 +24,24 @@ public class GetStatus {
         System.out.println("response.getHeaders() = " + response.getHeaders());
     }
 
+    @Test(description = "Given baseURI Whem we make the get call" +
+            " to /status enpoint Then verifystatus code")
+public void validateStatusCode(){
+        Response response = RestAssured.get("https://simple-books-api.glitch.me/status");
+        //here we made a GET call
+        int actualStatusCode = response.getStatusCode();
+        int expectedStatusCode = 200;
+        System.out.println("actualStatusCode = " + actualStatusCode);
+        System.out.println("expectedStatusCode = " + expectedStatusCode);
+       Assert.assertEquals(expectedStatusCode,actualStatusCode);
+    }
+    @Test(description = "Given baseURI we make a get call to /status " +
+            "enpoint then verify time of response is less than 2000")
+    public void ValidateTime(){
+        Response response = RestAssured.get("https://simple-books-api.glitch.me/status");
+        long actualResponseTime = response.getTime();
+        System.out.println("actualResponseTime = " + actualResponseTime);
+        Assert.assertTrue(actualResponseTime<2000);
+
+    }
 }
