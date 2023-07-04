@@ -1,5 +1,6 @@
 package RenasFly.base;
 
+import RenasFly.utilities.PropertiesReadingUtil;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import RenasFly.utilities.BrowserUtil;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
         @BeforeMethod
         public void SetUp(){
             DriverUtil.getDriver().manage().window().maximize();
-            DriverUtil.getDriver().get("http://34.136.20.156/#/login");
+            DriverUtil.getDriver().get(PropertiesReadingUtil.getProperties("renas_url"));
             DriverUtil.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             BrowserUtil.ImplicitWaitMethod(5);
         }

@@ -16,8 +16,8 @@ public class Positive_Login_Test extends TestBase {
         WebElement username =DriverUtil.getDriver().findElement(By.xpath("//input[@name='userEmail']"));
         WebElement password =DriverUtil.getDriver().findElement(By.xpath("//input[contains(@name,'Password')]"));
         WebElement logingButton =DriverUtil.getDriver().findElement(By.xpath("//button[.='Login']"));
-        username.sendKeys("Demiberbatov@yahoo.com");
-        password.sendKeys("Aa123456789");
+        username.sendKeys(PropertiesReadingUtil.getProperties("validUsername"));
+        password.sendKeys(PropertiesReadingUtil.getProperties("validPassword"));
         logingButton.click();
 
         WebElement profilePage = DriverUtil.getDriver().findElement(By.xpath("//li[.='Sandor']"));
