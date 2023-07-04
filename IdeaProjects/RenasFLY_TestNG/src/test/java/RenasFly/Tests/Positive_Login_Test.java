@@ -5,6 +5,7 @@ import RenasFly.utilities.*;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Positive_Login_Test extends TestBase {
@@ -18,6 +19,10 @@ public class Positive_Login_Test extends TestBase {
         username.sendKeys("Demiberbatov@yahoo.com");
         password.sendKeys("Aa123456789");
         logingButton.click();
+
+        WebElement profilePage = DriverUtil.getDriver().findElement(By.xpath("//li[.='Sandor']"));
+        Assert.assertTrue(profilePage.isDisplayed());
+
     }
 
 

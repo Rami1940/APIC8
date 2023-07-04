@@ -13,14 +13,13 @@ import java.util.concurrent.TimeUnit;
         @BeforeMethod
         public void SetUp(){
             DriverUtil.getDriver().manage().window().maximize();
-            DriverUtil.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             DriverUtil.getDriver().get("http://34.136.20.156/#/login");
+            DriverUtil.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
             BrowserUtil.ImplicitWaitMethod(5);
         }
 
         @AfterMethod
         public void closing(){
-            BrowserUtil.wait(2);
             DriverUtil.closeDriver();
         }
 
